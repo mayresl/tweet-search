@@ -33,28 +33,22 @@ namespace TwitterAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<string>> GetTweets(string key, string accessToken = null)
+        public async Task<dynamic> GetTweets(string key, string accessToken = null)
         {
             if (accessToken == null)
             {
                 accessToken = await GetAccessToken();
             }
 
-            var requestUserTimeline = new HttpRequestMessage(HttpMethod.Get,
+            var request = new HttpRequestMessage(HttpMethod.Get,
                 string.Format("https://api.twitter.com/1.1/search/tweets.json?q={0}", key));
 
-            requestUserTimeline.Headers.Add("Authorization", "Bearer " + accessToken);
+            request.Headers.Add("Authorization", "Bearer " + accessToken);
             var httpClient = new HttpClient();
-            HttpResponseMessage responseUserTimeLine = await httpClient.SendAsync(requestUserTimeline);
+            HttpResponseMessage response = await httpClient.SendAsync(request);
             var serializer = new JavaScriptSerializer();
-            dynamic json = serializer.Deserialize<object>(await responseUserTimeLine.Content.ReadAsStringAsync());
-            var enumerableTweets = (json as IEnumerable<dynamic>);
-
-            if (enumerableTweets == null)
-            {
-                return null;
-            }
-            return enumerableTweets.Select(t => (string)(t["text"].ToString()));
+            dynamic json = serializer.Deserialize<object>(await response.Content.ReadAsStringAsync());
+            return json;
         }
     }    
 }
