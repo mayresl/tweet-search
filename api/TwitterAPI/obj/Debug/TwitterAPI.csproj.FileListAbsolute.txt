@@ -26,3 +26,6 @@ C:\Users\mayre\Documents\Projetos\tweet-search\api\TwitterAPI\bin\System.Web.Htt
 C:\Users\mayre\Documents\Projetos\tweet-search\api\TwitterAPI\obj\Debug\TwitterAPI.csprojResolveAssemblyReference.cache
 C:\Users\mayre\Documents\Projetos\tweet-search\api\TwitterAPI\obj\Debug\TwitterAPI.dll
 C:\Users\mayre\Documents\Projetos\tweet-search\api\TwitterAPI\obj\Debug\TwitterAPI.pdb
+C:\Users\mayre\Documents\Projetos\tweet-search\api\TwitterAPI\bin\System.Web.Cors.dll
+C:\Users\mayre\Documents\Projetos\tweet-search\api\TwitterAPI\bin\System.Web.Http.Cors.dll
+C:\Users\mayre\Documents\Projetos\tweet-search\api\TwitterAPI\bin\System.Web.Http.Cors.xml

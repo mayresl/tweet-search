@@ -1,7 +1,14 @@
 function pesquisa(key){
-    var url = 'https://api.twitter.com/1.1/search/tweets.json?q=';
-    url += key;
-    var win = window.open(url, '_blank');
-    win.focus();
-    //alert(key);
+    var url = "http://localhost:50919/api/Twitter/GetTweets?key=" + key;
+    $.ajax({
+        url: url,
+        type: 'GET',
+        contentType: 'application/json; charset=utf-8',        
+        success: function(response){
+            console.log(response);
+        },
+        error: function(errors){
+            console.log(errors);
+        }
+    });
 }

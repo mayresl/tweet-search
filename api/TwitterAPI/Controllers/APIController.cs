@@ -6,16 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Script.Serialization;
+using System.Configuration;
 
 namespace TwitterAPI.Controllers
 {
+    [EnableCors(origins:"*", headers:"*", methods: "*")]
     public class TwitterController : ApiController
     {
         private async Task<string> GetAccessToken()
         {
-            string OAuthConsumerKey = "HWgSQJYsNadgLu7X9PzF8GXQK";
-            string OAuthConsumerSecret = "OCmOkA7BDUq2qfdhWqeSewb4BLXdNxbkwwsQ2WOsz1cZJRn2of";
+            string OAuthConsumerKey = ConfigurationManager.AppSettings["OAuthConsumerKey"];
+            string OAuthConsumerSecret = ConfigurationManager.AppSettings["OAuthConsumerSecret"];
             var httpClient = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Post, "https://api.twitter.com/oauth2/token ");
             var customerInfo = Convert.ToBase64String(new UTF8Encoding()
