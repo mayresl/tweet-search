@@ -24,7 +24,7 @@ $(document).ready(function () {
     });
 });
 
-function pesquisa(key, last_id = "") {
+function pesquisa(key, last_id) {
     key = key.replace(new RegExp('@', 'g'), "%40");
     key = key.replace(new RegExp('#', 'g'), "%23");
     key = key.replace(new RegExp(' ', 'g'), "+");
@@ -75,6 +75,7 @@ function renderizarTweets(json) {
                 }
                 $('#loading').hide();
             } else {
+                $('#loading').hide();
                 $("#status").text('Parece que não existem tweets sobre isso :(');
                 $("#status").show();
             }
@@ -86,6 +87,7 @@ function renderizarTweets(json) {
 
 function trataErro(json) {
     console.info("Retorno JSON: ", json);
+    $('#loading').hide();
     $("#status").show();
     $("#status").text('Ops!... Ocorreu um erro.');
 }

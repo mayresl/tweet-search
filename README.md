@@ -1,6 +1,9 @@
 # tweet-search
 Qipu - Exercício 1
 
+//README
+Para que a aplicação web funcione, é necessário que o servidor (tweet-search\api\TwitterAPI) esteja rodando.
+
 //TODO
 - [x] API
 - [x] HTML
