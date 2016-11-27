@@ -63,7 +63,8 @@ namespace TwitterAPI.Controllers
             HttpResponseMessage response = await httpClient.SendAsync(request);
             var serializer = new JavaScriptSerializer();
             dynamic json = serializer.Deserialize<object>(await response.Content.ReadAsStringAsync());
-            return json;
+            
+            return json; 
         }
     }    
 }
