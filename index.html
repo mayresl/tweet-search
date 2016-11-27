@@ -17,14 +17,18 @@
         <div class="input-group">
             <input type="text" id="search_bar" class="form-control"/>
             <span class="input-group-addon">
-                <button class="fa fa-search" style="background:transparent;border:none" onclick="pesquisa(document.getElementById('search_bar').value)">go!</button>
+                <button class="fa fa-search" style="background:transparent;border:none" onclick="pesquisa($('#search_bar').val())">go!</button>
             </span>
         </div>
     </header>
     <main>
-        <div class="tweets-container">
-            <p>Loading...</p>
+        <div id="tweets-container" class="container">
+            <ul id="tweets"></ul>
         </div>
+        <p id="loading" hidden>
+            <!--<img src="img/spin.svg" alt="Loading…" />-->
+            Loading…
+        </p>
     </main>
 </body>
 

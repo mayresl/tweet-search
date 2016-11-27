@@ -36,15 +36,29 @@ namespace TwitterAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<dynamic> GetTweets(string key, string accessToken = null)
+        public async Task<dynamic> GetTweets(string key, int count, string last_id = null, string accessToken = null)
         {
             if (accessToken == null)
             {
                 accessToken = await GetAccessToken();
             }
 
-            var request = new HttpRequestMessage(HttpMethod.Get,
-                string.Format("https://api.twitter.com/1.1/search/tweets.json?q={0}", key));
+            //var request = (string.IsNullOrEmpty(last_id)) ? new HttpRequestMessage(HttpMethod.Get,
+            //    string.Format("https://api.twitter.com/1.1/search/tweets.json?q={0}&count={1}", key, count)) :
+            //        new HttpRequestMessage(HttpMethod.Get,
+            //        string.Format("https://api.twitter.com/1.1/search/tweets.json?q={0}&count={1}&max_id={2}", key, count, last_id));
+
+            HttpRequestMessage request = null;
+            if (string.IsNullOrEmpty(last_id))
+            {
+                request = new HttpRequestMessage(HttpMethod.Get,
+                    string.Format("https://api.twitter.com/1.1/search/tweets.json?q={0}&count={1}", key, count));
+            }
+            else
+            {
+                request = new HttpRequestMessage(HttpMethod.Get,
+                    string.Format("https://api.twitter.com/1.1/search/tweets.json?q={0}&count={1}&max_id={2}", key, count, last_id));
+            }
 
             request.Headers.Add("Authorization", "Bearer " + accessToken);
             var httpClient = new HttpClient();
