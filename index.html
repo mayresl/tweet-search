@@ -17,13 +17,14 @@
         <div class="input-group">
             <input type="text" id="search_bar" class="form-control"/>
             <span class="input-group-addon">
-                <button class="fa fa-search" style="background:transparent;border:none" onclick="pesquisa($('#search_bar').val())">go!</button>
+                <button id="go" class="fa fa-search" style="background:transparent;border:none" onclick="pesquisa($('#search_bar').val())">go!</button>
             </span>
         </div>
     </header>
     <main>
+        <p id="status" hidden></p>
         <div id="tweets-container" class="container">
-            <ul id="tweets"></ul>
+            <div id="tweets" class="list-group"></div>
         </div>
         <p id="loading" hidden>
             <!--<img src="img/spin.svg" alt="Loading…" />-->
